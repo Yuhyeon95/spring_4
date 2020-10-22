@@ -18,6 +18,24 @@ public class QnaController {
 	
 	@Autowired
 	private QnaService qnaService;
+	
+	@GetMapping("qnaSelect")
+	public ModelAndView getOne(BoardDTO boardDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		boardDTO = qnaService.getOne(boardDTO);
+		
+		if(boardDTO != null) {
+			mv.setViewName("board/boardSelect");
+			mv.addObject("one", boardDTO);
+			mv.addObject("board", "qna");
+		}else {
+			mv.setViewName("common/result");
+			mv.addObject("msg", "No Data");
+			mv.addObject("path", "./qnaList");
+		}
+		
+		return mv;
+	}
 
 	@PostMapping("qnaWrite")
 	public ModelAndView setInsert(BoardDTO boardDTO) throws Exception {
@@ -30,7 +48,7 @@ public class QnaController {
 		
 		mv.addObject("msg", message);
 		mv.addObject("path", "./qnaList");
-		mv.addObject("common/result");
+		mv.setViewName("common/result");
 		return mv;
 		
 	}
