@@ -35,7 +35,6 @@ public class NoticeController {
 			mv.addObject("msg", "No Data");
 			mv.addObject("path", "./noticeList");
 		}
-		
 		return mv;
 	}
 	
