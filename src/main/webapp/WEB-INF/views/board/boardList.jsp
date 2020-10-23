@@ -77,10 +77,10 @@
   	</c:if>
   </div>
   
-
-
-  
+<!-- 로그인한 사람만 write 버튼보이게 하기 -->
+  <c:if test="${not empty member}">
   <a href="./${board}Write" class="btn btn-danger">Write</a>
+  </c:if>
   
 </div>
 </body>
