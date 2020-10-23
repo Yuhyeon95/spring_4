@@ -16,6 +16,14 @@ public class QnaDAO implements BoardDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.choa.s4.board.qna.QnaDAO."; //mapper의 namespace명과 동일(.(~의) 붙임) 
+
+	public int setReply(BoardDTO boardDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setReply", boardDTO);
+	}
+	
+	public int setReplyUpdate(BoardDTO boardDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setReplyUpdate", boardDTO);
+	}
 	
 	@Override
 	public int setInsert(BoardDTO boardDTO) throws Exception {

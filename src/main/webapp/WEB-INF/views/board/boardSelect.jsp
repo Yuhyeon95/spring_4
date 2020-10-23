@@ -18,6 +18,9 @@
   <h3>Contents : ${one.contents}</h3>
   <input type="button" title="${one.num}" value="Delete" class="btn btn-warning" id="del">
   <input type="button" class="btn btn-primary" value="Update" id="update">
+   <c:if test="${board ne 'notice'}">
+  	<a href="./${board}Reply?num=${one.num}" class="btn btn-info">Reply</a>
+  </c:if>
 </div>
 
 <script type="text/javascript">
