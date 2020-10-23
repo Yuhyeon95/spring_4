@@ -77,11 +77,20 @@
   	</c:if>
   </div>
   
-<!-- 로그인한 사람만 write 버튼보이게 하기 -->
+<!-- notice면 관리자가 로그인 했을 때만 write 가능 -->
+<!-- 나머지는 회원일 경우 write 가능 --> 
+ <c:choose>
+ <c:when test="${board eq 'notice'}">
+  <c:if test="${not empty member and member.id eq 'admin'}">
+  <a href="./${board}Write" class="btn btn-danger">Write</a>
+  </c:if>
+ </c:when>
+ <c:otherwise>
   <c:if test="${not empty member}">
   <a href="./${board}Write" class="btn btn-danger">Write</a>
   </c:if>
-  
+ </c:otherwise>
+ </c:choose> 
 </div>
 </body>
 </html>

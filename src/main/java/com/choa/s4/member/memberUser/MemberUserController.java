@@ -18,6 +18,52 @@ public class MemberUserController {
 	@Autowired
 	private MemberUserService memberUserService;
 	
+	//setMemberDelete
+	@GetMapping("memberDelete")
+	public ModelAndView setMemberDelete(HttpSession session) throws Exception{
+		ModelAndView mv= new ModelAndView();
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		int result = memberUserService.setMemberDelete(memberDTO);
+		
+		mv.setViewName("redirect:../");
+		return mv;
+	}
+	
+	
+	//setMemberUpdate
+	@PostMapping("memberUpdate")
+	public ModelAndView setMemberUpdate(MemberDTO memberDTO, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberDTO s = (MemberDTO)session.getAttribute("member");
+		memberDTO.setId(s.getId());
+		int result = memberUserService.setMemberUpdate(memberDTO);
+		
+		if(result>0) {
+			s.setName(memberDTO.getName());
+			s.setEmail(memberDTO.getEmail());
+			session.setAttribute("member", s);
+		}
+		mv.setViewName("redirect:./memberPage");
+		return mv;
+	}
+	
+	@GetMapping("memberUpdate")
+	public ModelAndView setMemberUpdate() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/memberUpdate");
+		
+		return mv;
+	}
+	
+	//getMemberPage
+	@GetMapping("memberPage")
+	public ModelAndView getMemberPage() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/memberPage");
+		
+		return mv;
+	}
+	
 	//getMemberLogout
 	@GetMapping("memberLogout")
 	public ModelAndView getMemberLogout(HttpSession session) throws Exception{

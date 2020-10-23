@@ -17,5 +17,18 @@ public class MemberUserService implements MemberService {
 		// TODO Auto-generated method stub
 		return memberUserDAO.getMemberLogin(memberDTO);
 	}
+	
+	public int setMemberUpdate(MemberDTO memberDTO) throws Exception {
+		return memberUserDAO.setMemberUpdate(memberDTO);
+	}
 
+	@Override
+	public int setMemberDelete(MemberDTO memberDTO) throws Exception {
+		return memberUserDAO.setMemberDelete(memberDTO);
+	}
+
+
+
+
+	
 }
