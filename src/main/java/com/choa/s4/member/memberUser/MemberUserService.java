@@ -27,6 +27,11 @@ public class MemberUserService implements MemberService {
 		return memberUserDAO.setMemberDelete(memberDTO);
 	}
 
+	@Override
+	public int setMemberJoin(MemberDTO memberDTO) throws Exception {
+		return memberUserDAO.setMemberJoin(memberDTO);
+	}
+
 
 
 
